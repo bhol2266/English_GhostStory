@@ -21,6 +21,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:progressBackgroundTint="@color/textcolor2"
+        android:thumbTint="@color/textcolor"
+        android:progressTint="@color/textcolor"
         android:progress="50" />
 
     <TextView
@@ -36,6 +39,9 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:progressBackgroundTint="@color/textcolor2"
+        android:thumbTint="@color/textcolor"
+        android:progressTint="@color/textcolor"
         android:progress="50" />
 
     <Button

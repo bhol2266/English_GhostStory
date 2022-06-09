@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,8 +18,8 @@ import java.util.List;
 public class ProgrammingAdapter2 extends RecyclerView.Adapter<ProgrammingAdapter2.viewholder> {
 
     List<RowData> collectonData;
-Context context;
-String Collection_Number;
+    Context context;
+    String Collection_Number;
 
 
     public ProgrammingAdapter2(List<RowData> collectonData, Context context, String message) {
@@ -45,9 +46,6 @@ String Collection_Number;
         RowData firebaseData = collectonData.get(position);
         holder.title.setText(firebaseData.getTitle());
 
-        holder.heading.setText(firebaseData.getStory());
-        String indexx=String.valueOf(position+1);
-        holder.index.setText(indexx);
         String keyy="1";
         holder.recyclerview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,19 +71,17 @@ String Collection_Number;
 
 
     public class viewholder extends RecyclerView.ViewHolder {
-       TextView title;
-       TextView index,heading,date;
+        TextView title;
+        TextView date;
 
-      RelativeLayout recyclerview;
+        LinearLayout recyclerview;
 
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
             recyclerview=itemView.findViewById(R.id.recyclerviewLayout);
-          title=itemView.findViewById(R.id.titlee);
-          index=itemView.findViewById(R.id.index);
+            title=itemView.findViewById(R.id.titlee);
             date=itemView.findViewById(R.id.date_recyclerview);
-            heading=itemView.findViewById(R.id.heading_recyclerview);
 
 
 

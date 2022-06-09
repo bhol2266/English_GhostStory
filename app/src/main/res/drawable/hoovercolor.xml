@@ -4,8 +4,8 @@
     >
 
     <gradient
-        android:startColor="#BA838383"
-        android:endColor="#C8F1F0F0"
+        android:startColor="#BA434343"
+        android:endColor="#C8313131"
 
         />
     <corners

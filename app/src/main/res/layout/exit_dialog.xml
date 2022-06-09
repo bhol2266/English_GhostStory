@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="20dp"
-    android:background="#232323"
+    android:background="@drawable/background"
     android:orientation="vertical">
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -30,14 +30,17 @@
 
 
     <TextView
-        android:id="@+id/exit_textview"
+        android:id="@+id/exitMSG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="5dp"
         android:gravity="center"
-        android:text="If you Like the App. Please Give us 5 Star!"
-        android:textColor="#FFFFFF" />
+        android:layout_margin="10dp"
+        android:textColor="@color/textcolor"
+        android:fontFamily="@font/macabre"
+        android:maxLines="2"
+        android:text="If you Like the app. Please give us a Good Rating"/>
+
+
 
 
 
@@ -46,9 +49,11 @@
         android:id="@+id/rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/exit_textview2"
+        android:layout_below="@+id/exitMSG"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:gravity="left"
         android:orientation="horizontal">
 

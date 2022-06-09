@@ -1,15 +1,19 @@
 package com.bhola.english_ghoststory;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +21,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -51,9 +58,7 @@ public class ProgrammingAdapter3 extends RecyclerView.Adapter<ProgrammingAdapter
 
         holder.title.setText(modelData_forFavourites.getTitle());
         holder.date.setText("2019-10-15");
-        holder.heading.setText(modelData_forFavourites.getStory());
-        String indexx = String.valueOf(position + 1);
-        holder.index.setText(indexx);
+
         holder.recyclerview.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -76,7 +81,7 @@ public class ProgrammingAdapter3 extends RecyclerView.Adapter<ProgrammingAdapter
                         final MediaPlayer mp = MediaPlayer.create(v.getContext(), R.raw.sound);
                         mp.start();
 
-                        String[] Table_Names={"collection1","collection2","collection3","collection4","collection5","collection6","collection7","collection8","collection9","collection10"};
+                        String[] Table_Names = {"collection1", "collection2", "collection3", "collection4", "collection5", "collection6"};
 
                         for (int i = 0; i < Table_Names.length; i++) {
                             Cursor cursor = new DatabaseHelper2(v.getContext(), SplashScreen.DB_NAME, SplashScreen.DB_VERSION, Table_Names[i]).readalldata();
@@ -140,18 +145,16 @@ public class ProgrammingAdapter3 extends RecyclerView.Adapter<ProgrammingAdapter
 
     public class viewholder extends RecyclerView.ViewHolder {
         TextView title;
-        TextView index, heading, date;
+        TextView   date;
 
-        RelativeLayout recyclerview;
+        LinearLayout recyclerview;
 
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
             recyclerview = itemView.findViewById(R.id.recyclerviewLayout);
             title = itemView.findViewById(R.id.titlee);
-            index = itemView.findViewById(R.id.index);
             date = itemView.findViewById(R.id.date_recyclerview);
-            heading = itemView.findViewById(R.id.heading_recyclerview);
 
         }
     }

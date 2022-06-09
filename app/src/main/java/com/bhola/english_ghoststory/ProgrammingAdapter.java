@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,11 +22,12 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
     String DB_TABLENUMBER;
 
 
+
     public ProgrammingAdapter(List<RowData> rowDatas, Context context, String title1, String database_tableNo) {
         this.collectonData = rowDatas;
-        this.context = context;
-        this.Collection_Number = title1;
-        this.DB_TABLENUMBER = database_tableNo;
+        this.context=context;
+        this.Collection_Number=title1;
+        this.DB_TABLENUMBER=database_tableNo;
     }
 
     @NonNull
@@ -39,24 +41,18 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
 
-
         RowData rowdata = collectonData.get(position);
-
-
         holder.title.setText(rowdata.getTitle());
         holder.date.setText("2019-10-15");
-        holder.heading.setText(rowdata.getStory());
-        String indexx = String.valueOf(position + 1);
-        holder.index.setText(indexx);
         holder.recyclerview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), StoryPage.class);
-                intent.putExtra("_id", rowdata.get_id());
-                intent.putExtra("Story", rowdata.getStory());
-                intent.putExtra("DB_TABLENUMBER", DB_TABLENUMBER);
-                intent.putExtra("Collection2", "Notification");
-                intent.putExtra("Title", rowdata.getTitle());
+                Intent intent=new Intent(v.getContext(),StoryPage.class);
+                intent.putExtra("_id",rowdata.get_id());
+                intent.putExtra("Story",rowdata.getStory());
+                intent.putExtra("DB_TABLENUMBER",DB_TABLENUMBER);
+                intent.putExtra("Collection2","Notification");
+                intent.putExtra("Title",rowdata.getTitle());
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
@@ -67,31 +63,24 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
     }
 
 
+
     @Override
     public int getItemCount() {
-
-        if (SplashScreen.exit_Refer_appNavigation.equals("inactive")) {
-            return 1;
-        } else {
-            return collectonData.size();
-
-        }
+        return collectonData.size();
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
         TextView title;
-        TextView index, heading, date;
+        TextView date;
 
-        RelativeLayout recyclerview;
+        LinearLayout recyclerview;
 
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
-            recyclerview = itemView.findViewById(R.id.recyclerviewLayout);
-            title = itemView.findViewById(R.id.titlee);
-            index = itemView.findViewById(R.id.index);
-            date = itemView.findViewById(R.id.date_recyclerview);
-            heading = itemView.findViewById(R.id.heading_recyclerview);
+            recyclerview=itemView.findViewById(R.id.recyclerviewLayout);
+            title=itemView.findViewById(R.id.titlee);
+            date=itemView.findViewById(R.id.date_recyclerview);
 
         }
     }

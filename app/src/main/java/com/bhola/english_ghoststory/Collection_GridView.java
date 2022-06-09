@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -20,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,9 +33,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.ads.mediationtestsuite.MediationTestSuite;
 import com.google.android.gms.ads.AdView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.Task;
 
 public class Collection_GridView extends AppCompatActivity {
 
@@ -47,42 +56,64 @@ public class Collection_GridView extends AppCompatActivity {
     com.facebook.ads.InterstitialAd facebook_IntertitialAds;
     com.facebook.ads.AdView facebook_adView;
 
+    ViewPager viewPager;
+    TabLayout tabLayout;
+    TabItem tabItem1, tabItem2;
+    PageAdapter pageAdapter;
+    private ReviewManager reviewManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection__grid_view);
 
-        StatusBarTransparent();
-
-        navigationDrawer();
-//        backgroundMusic();
-        actionBar();
-
-
         try {
-            checkLoginTimes_Databases();
             if (SplashScreen.Ads_State.equals("active")) {
                 showAds();
             }
         } catch (Exception ignored) {
         }
 
+        StatusBarTransparent();
+
+        navigationDrawer();
+        tabview();
+
+
+
+
     }
 
-    private void checkLoginTimes_Databases() {
+    private void tabview() {
+        tabLayout = (TabLayout) findViewById(R.id.tablayout1);
+        tabItem1 = (TabItem) findViewById(R.id.tab1);
+        tabItem2 = (TabItem) findViewById(R.id.tab2);
+        viewPager = (ViewPager) findViewById(R.id.vpager);
 
-        Cursor cursor1 = new DatabaseHelper(this, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "DB_VERSION").readalldata();
-        while (cursor1.moveToNext()) {
-            int DB_VERSION_FROM_DATABASE = cursor1.getInt(1);
+        pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(pageAdapter);
 
-            if (DB_VERSION_FROM_DATABASE != SplashScreen.DB_VERSION) {
-                DatabaseHelper databaseHelper2 = new DatabaseHelper(this, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "DB_VERSION");
-                databaseHelper2.db_delete();
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+
+                if (tab.getPosition() == 0 || tab.getPosition() == 1)
+                    pageAdapter.notifyDataSetChanged();
             }
 
-        }
-        cursor1.close();
-        String res = new DatabaseHelper(this, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "UserInformation").updaterecord_Login_Times(1, SplashScreen.Login_Times + 1);
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        //listen for scroll or page change
 
     }
 
@@ -92,11 +123,7 @@ public class Collection_GridView extends AppCompatActivity {
 
             mAdView = findViewById(R.id.adView);
             ADS_ADMOB.BannerAd(this, mAdView);
-
-
         } else {
-
-
             LinearLayout facebook_bannerAd_layput;
             facebook_bannerAd_layput = findViewById(R.id.banner_container);
             ADS_FACEBOOK.bannerAds(this, facebook_adView, facebook_bannerAd_layput, getString(R.string.Facebbok_BannerAdUnit_1));
@@ -121,6 +148,7 @@ public class Collection_GridView extends AppCompatActivity {
 
     private void exit_dialog() {
 
+
         TextView appLink;
         Button RateUs, exit;
         LinearLayout ratingLinearLayout;
@@ -130,6 +158,12 @@ public class Collection_GridView extends AppCompatActivity {
         View promptView = inflater.inflate(R.layout.exit_dialog, null);
         builder.setView(promptView);
         builder.setCancelable(true);
+
+        TextView exitMSG;
+        exitMSG =promptView.findViewById(R.id.exitMSG);
+        exitMSG.setVisibility(View.VISIBLE);
+        init(); // Show PLay store Review option
+
 
         GiveRating(promptView);
 
@@ -149,8 +183,6 @@ public class Collection_GridView extends AppCompatActivity {
         }
 
 
-
-
         RateUs = promptView.findViewById(R.id.exit_button1);
         RateUs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,7 +197,7 @@ public class Collection_GridView extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SplashScreen.exit_Refer_appNavigation.equals("active") && SplashScreen.Login_Times < 2 && SplashScreen.Refer_App_url2.length() > 10) {
+                if (SplashScreen.exit_Refer_appNavigation.equals("active") && SplashScreen.Login_Times < 3 && SplashScreen.Refer_App_url2.length() > 10) {
                     String res = new DatabaseHelper(Collection_GridView.this, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "UserInformation").updaterecord_Login_Times(1, SplashScreen.Login_Times + 1);
                     Intent j = new Intent(Intent.ACTION_VIEW);
                     j.setData(Uri.parse(SplashScreen.Refer_App_url2));
@@ -197,128 +229,7 @@ public class Collection_GridView extends AppCompatActivity {
     }
 
 
-    public void collection1(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-1";
-        String DB_TABLENAME = "collection1";
-        intent.putExtra("bhola", title);
-        intent.putExtra("tableNo", "collection1");
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        startActivity(intent);
-    }
 
-    public void collection2(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-2";
-        String DB_TABLENAME = "collection2";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection2");
-        startActivity(intent);
-    }
-
-    public void collection3(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-3";
-        String DB_TABLENAME = "collection3";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection3");
-        startActivity(intent);
-    }
-
-    public void collection4(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-4";
-        String DB_TABLENAME = "collection4";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection4");
-        startActivity(intent);
-    }
-
-    public void collection5(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-5";
-        String DB_TABLENAME = "collection5";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection5");
-        startActivity(intent);
-    }
-
-    public void collection6(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-6";
-        String DB_TABLENAME = "collection6";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection6");
-        startActivity(intent);
-    }
-
-    public void collection7(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-7";
-        String DB_TABLENAME = "collection7";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection7");
-        startActivity(intent);
-    }
-
-    public void collection8(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-8";
-        String DB_TABLENAME = "collection8";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection8");
-        startActivity(intent);
-    }
-
-    public void collection9(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-9";
-        String DB_TABLENAME = "collection9";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection9");
-        startActivity(intent);
-    }
-
-
-    public void collection10(View view) {
-        Intent intent = new Intent(this, Collection_detail.class);
-        String title = "Collection-10";
-        String DB_TABLENAME = "collection10";
-        intent.putExtra("bhola", title);
-        intent.putExtra("DB_TABLENAME", DB_TABLENAME);
-        intent.putExtra("tableNo", "collection10");
-        startActivity(intent);
-    }
-
-
-    private void actionBar() {
-        ImageView share_ap, share_icon;
-
-
-//        share_ap = findViewById(R.id.share_app);
-//        share_ap.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (SplashScreen.Refer_App_url2.length() > 10) {
-//                    Intent j = new Intent(Intent.ACTION_VIEW);
-//                    j.setData(Uri.parse(SplashScreen.Refer_App_url2));
-//                    startActivity(j);
-//                    drawerLayout.closeDrawer(GravityCompat.START);
-//
-//                }
-//            }
-//        });
-
-
-    }
 
     private void navigationDrawer() {
 
@@ -417,7 +328,7 @@ public class Collection_GridView extends AppCompatActivity {
                     case R.id.Privacy_Policy:
 
                         Intent i5 = new Intent(Intent.ACTION_VIEW);
-                        i5.setData(Uri.parse("https://sites.google.com/view/englishghoststory/home"));
+                        i5.setData(Uri.parse("https://sites.google.com/d/111WsQ1EEX2mjIXTuRKx-WpYwOE2LLsVg/p/140TwzLGm5fgpWHkfm8a6C-6JGJbzeJsC/edit"));
                         startActivity(i5);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
@@ -539,5 +450,27 @@ public class Collection_GridView extends AppCompatActivity {
         win.setAttributes(winParams);
     }
 
+    private void init() {
+        reviewManager = ReviewManagerFactory.create(this);
+        // Referencing the button
+        showRateApp();
+    }
+    // Shows the app rate dialog box using In-App review API
+    // The app rate dialog box might or might not shown depending
+    // on the Quotas and limitations
+    public void showRateApp() {
+        com.google.android.play.core.tasks.Task<ReviewInfo> request = reviewManager.requestReviewFlow();
+        request.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // Getting the ReviewInfo object
+                ReviewInfo reviewInfo = task.getResult();
 
+                Task<Void> flow = reviewManager.launchReviewFlow(this, reviewInfo);
+                flow.addOnCompleteListener(task1 -> {
+                    // The flow has finished. The API does not indicate whether the user
+                    // reviewed or not, or even whether the review dialog was shown.
+                });
+            }
+        });
+    }
 }

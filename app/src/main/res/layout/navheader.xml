@@ -10,15 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/ghost13" />
+        app:srcCompat="@drawable/ghost8" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#F44336"
-        android:textSize="25dp"
+        android:textColor="#B39C58"
+        android:textSize="32dp"
         android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
         android:textStyle="bold"
-        android:text="Horror Stories 2021"
+        android:fontFamily="@font/lora"
+        android:text="Horror Stories"
         android:background="@drawable/background2"
         android:gravity="center_horizontal" />
 

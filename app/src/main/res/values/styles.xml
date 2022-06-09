@@ -25,12 +25,19 @@
     </style>
 
 
+
     <style name="NavigationViewStyle">
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#B39C58</item>
+        <item name="android:fontFamily">@font/lora</item>
+        <item name="android:background">@drawable/background2</item>
+    </style>
 
+    <style name="tabText">
 
-        <item name="android:fontFamily">@font/horror</item>
-
+        <item name="android:textSize">20dp</item><!-- text size in menu-->
+        <item name="android:fontFamily">@font/lora</item><!-- text size in menu-->
+        <item name="android:background">@drawable/hooverffext</item><!-- text size in menu-->
 
     </style>
 
