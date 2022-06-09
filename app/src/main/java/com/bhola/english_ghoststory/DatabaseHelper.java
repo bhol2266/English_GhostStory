@@ -194,14 +194,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public String addAudioStoriesLinks(String name,String duration,String date, String link, String table) {
+    public String addAudioStoriesLinks(String name,String season,String date, String link, String table) {
         SQLiteDatabase db = this.getWritableDatabase();
 
 
         ContentValues values = new ContentValues();
 
         values.put("name", name);
-        values.put("duration", duration);
+        values.put("season", season);
         values.put("date", date);
         values.put("link", link);
 

@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
@@ -47,6 +48,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class SplashScreen extends AppCompatActivity {
@@ -76,10 +79,6 @@ public class SplashScreen extends AppCompatActivity {
     com.facebook.ads.InterstitialAd facebook_IntertitialAds;
     RewardedInterstitialAd mRewardedVideoAd;
 
-    public static ArrayList<String> filenames;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +88,19 @@ public class SplashScreen extends AppCompatActivity {
         copyDatabase();
         allUrl();
 
-//      readJSON("suspense");
         sharedPrefrences();
         generateFCMToken();
 
+        List<String> filesname = new ArrayList<>();
+        try {
+            filesname = getFileNames(SplashScreen.this, "story3");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < filesname.size(); i++) {
+            readJSON(filesname.get(i),Integer.toString(i+1));
+        }
 
         int[] clips = {R.raw.nmh_scream1, R.raw.ghost02, R.raw.laughhowl1, R.raw.scary, R.raw.wickedwitchlaugh};
 
@@ -116,7 +124,7 @@ public class SplashScreen extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 LinearLayout progressbar = findViewById(R.id.progressbar);
                 progressbar.setVisibility(View.VISIBLE);
-                handler_forIntent();
+//                handler_forIntent();
             }
 
             @Override
@@ -133,8 +141,6 @@ public class SplashScreen extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         generateNotification();
-
-        filenames = new ArrayList<String>();
 
 
     }
@@ -270,28 +276,24 @@ public class SplashScreen extends AppCompatActivity {
         return encryptedText;
     }
 
-    private void readJSON(String filename) {
+    private void readJSON(String filename, String season) {
         try {
-            JSONArray jsonArray = new JSONArray(loadJSONFromAsset(filename));
+            JSONObject obj = new JSONObject(loadJSONFromAsset(filename));
+            JSONArray jsonArray =obj.getJSONArray("audio_story");
             ArrayList<String> titlelist = new ArrayList<String>();
-            ArrayList<String> durationlist = new ArrayList<String>();
-            ArrayList<String> datelist = new ArrayList<String>();
-            ArrayList<String> linklist = new ArrayList<String>();
-            ArrayList<String> data = new ArrayList<String>();
-
+            ArrayList<String> authorList = new ArrayList<String>();
+            ArrayList<String> href = new ArrayList<String>();
 
             for (int i = 0; i < jsonArray.length(); i++) {
-                titlelist.add(jsonArray.getJSONObject(i).getString("name"));
-                durationlist.add(jsonArray.getJSONObject(i).getString("duration"));
-                datelist.add(jsonArray.getJSONObject(i).getString("date"));
-                linklist.add(jsonArray.getJSONObject(i).getString("link"));
+                titlelist.add(jsonArray.getJSONObject(i).getString("title"));
+                authorList.add(jsonArray.getJSONObject(i).getString("author"));
+                href.add(jsonArray.getJSONObject(i).getString("href"));
             }
 
-            Log.d(TAG, "readJSON: " + titlelist);
 
             for (int i = 0; i < titlelist.size(); i++) {
                 DatabaseHelper insertRecord = new DatabaseHelper(getApplicationContext(), SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "UserInformation");
-                String res = insertRecord.addAudioStoriesLinks(titlelist.get(i), durationlist.get(i), datelist.get(i), encryption(linklist.get(i)), "Audio_Story_Horror");
+                String res = insertRecord.addAudioStoriesLinks(titlelist.get(i),season , "22-08-2022", encryption(href.get(i)), "Audio_Story_3");
                 Log.d(TAG, "INSERT DATA: " + res);
             }
 
@@ -303,19 +305,26 @@ public class SplashScreen extends AppCompatActivity {
     public String loadJSONFromAsset(String filename) {
         String json = null;
         try {
-            InputStream is = getApplicationContext().getAssets().open(filename + ".json");
+            InputStream is = getApplicationContext().getAssets().open("story3/"+filename);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
             is.close();
             json = new String(buffer, "UTF-8");
+
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
         }
         return json;
+
     }
 
+    private List<String> getFileNames(Context context, String folderName) throws IOException {
+        AssetManager assetManager = context.getAssets();
+        String[] files = assetManager.list(folderName);
+        return Arrays.asList(files);
+    }
 
     boolean isInternetAvailable(Context context) {
         if (context == null) return false;
