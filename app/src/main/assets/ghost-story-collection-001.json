@@ -1,0 +1,57 @@
+{
+    "coverImage": "https://archive.org/download/ghost_stories_001_librivox/Ghost_Story_Collection_1_1002.jpg",
+    "collectionName": "Ghost Story Collection 001",
+    "description": "A collection of ten pieces, read by various readers, about the unreal edges of this world in legend and story; tales of love, death and beyond. If just one story prickles the hair on the back of your neck, or prickles your eyelids with the touch of tears, we will have succeeded. (Summary by Peter Yearsley)",
+    "audio_story": [
+        {
+            "title": "The Empty House",
+            "author": "Algernon Blackwood",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-empty_house_blackwood_wsc.mp3"
+        },
+        {
+            "title": "The Judge's House",
+            "author": "Bram Stoker",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-judges_house_stoker_wsc.mp3"
+        },
+        {
+            "title": "Laura",
+            "author": "Saki",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-laura_saki_pe.mp3"
+        },
+        {
+            "title": "Man-size in Marble",
+            "author": "E. Nesbit",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-man_size_in_marble_nesbit_ajm.mp3"
+        },
+        {
+            "title": "Phantasmagoria",
+            "author": "Lewis Carroll",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-phantasmagoria_carroll_dg.mp3"
+        },
+        {
+            "title": "Schalken the Painter",
+            "author": "Joseph Sheridan Le Fanu",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-schalken_the_painter_lefanu_ge.mp3"
+        },
+        {
+            "title": "The Shadows on the Wall",
+            "author": "Mary E. Wilkins Freeman",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-shadows_on_the_wall_freeman_blb.mp3"
+        },
+        {
+            "title": "Tales of Treasure",
+            "author": "Anonymous",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-tales_of_treasure_anon_bd.mp3"
+        },
+        {
+            "title": "The Trial for Murder",
+            "author": "Charles Dickens",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-trial_for_murder_dickens_cl.mp3"
+        },
+        {
+            "title": "Uncle Abraham’s Romance",
+            "author": "E. Nesbit",
+            "href": "https://www.archive.org/download/ghost_stories_001_librivox/gs001-uncle_abrahams_romance_nesbit_py.mp3"
+        }
+    ]
+}
