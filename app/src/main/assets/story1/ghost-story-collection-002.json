@@ -1,0 +1,57 @@
+{
+    "coverImage": "https://archive.org/download/ghost_stories_002_librivox/Ghost_Story_Collection_2_1002.jpg",
+    "collectionName": "Ghost Story Collection 002",
+    "description": "A collection of ten pieces, read by various readers, about the unreal edges of this world in legend and story; tales of love, death and beyond. If just one story prickles the hair on the back of your neck, or prickles your eyelids with the touch of tears, we will have succeeded.",
+    "audio_story": [
+        {
+            "title": "The Beast in the Cave",
+            "author": "H. P. Lovecraft",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-beast_in_the_cave_lovecraft_br.mp3"
+        },
+        {
+            "title": "The Bell in the Fog",
+            "author": "Gertrude Atherton",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-bell_in_the_fog_atherton_jwt.mp3"
+        },
+        {
+            "title": "The Ebony Frame",
+            "author": "E. Nesbit",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-ebony_frame_nesbit_cs.mp3"
+        },
+        {
+            "title": "The Ghost Club",
+            "author": "John Kendrick Bangs",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-ghost_club_bangs_jwt.mp3"
+        },
+        {
+            "title": "A Ghost Story",
+            "author": "Mark Twain",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-ghost_story_twain_ehl.mp3"
+        },
+        {
+            "title": "A Midnight Visitor",
+            "author": "John Kendrick Bangs",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-midnight_visitor_bangs_jwt.mp3"
+        },
+        {
+            "title": "A Psychical Prank",
+            "author": "John Kendrick Bangs",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-psychical_prank_bangs_jwt.mp3"
+        },
+        {
+            "title": "A Quicksilver Cassandra",
+            "author": "John Kendrick Bangs",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-quicksilver_cassandra_bangs_jwt.mp3"
+        },
+        {
+            "title": "The Red Room",
+            "author": "H. G. Wells",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-red_room_wells_wsc.mp3"
+        },
+        {
+            "title": "The Water Ghost of Harrowby Hall",
+            "author": "John Kendrick Bangs",
+            "href": "https://www.archive.org/download/ghost_stories_002_librivox/gs002-water_ghost_of_harrowby_hall_Bangs_jwt.mp3"
+        }
+    ]
+}
