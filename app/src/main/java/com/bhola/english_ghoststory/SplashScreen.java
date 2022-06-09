@@ -68,9 +68,9 @@ public class SplashScreen extends AppCompatActivity {
     DatabaseReference url_mref;
     public static String Android_ID;
     //   This Should be same as the version From Database
-    public static int DB_VERSION = 5;
-    public static int DB_VERSION_INSIDE_TABLE = 6;
-    public static String DB_NAME = "ghoststory";
+    public static int DB_VERSION_INSIDE_TABLE = 2;
+    public static int DB_VERSION = 1;
+    public static String DB_NAME = "English_GhostStory";
     public static int Login_Times = 0;
     DatabaseHelper databaseHelper;
     com.facebook.ads.InterstitialAd facebook_IntertitialAds;
@@ -79,11 +79,6 @@ public class SplashScreen extends AppCompatActivity {
     public static ArrayList<String> filenames;
 
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        ring.stop();
-    }
 
 
     @Override
@@ -96,7 +91,6 @@ public class SplashScreen extends AppCompatActivity {
 
 //      readJSON("suspense");
         sharedPrefrences();
-
         generateFCMToken();
 
 
@@ -367,6 +361,11 @@ public class SplashScreen extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        ring.stop();
+    }
 
 }
 

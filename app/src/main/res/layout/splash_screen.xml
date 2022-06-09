@@ -16,7 +16,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/horror"
-        android:text="Hindi Horror Stories"
+        android:text="Horror Stories"
         android:textColor="@color/textcolor"
         android:textSize="35dp"
         android:textStyle="bold" />
@@ -30,7 +30,7 @@
         android:elevation="5dp"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/splashscreen_anim"
-        app:lottie_speed="2.3" />
+        app:lottie_speed="1.5" />
 
 
     <LinearLayout

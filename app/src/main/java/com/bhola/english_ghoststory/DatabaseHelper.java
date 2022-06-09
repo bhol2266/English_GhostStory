@@ -48,6 +48,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String path = DbPath + DbName;
             SQLiteDatabase.openDatabase(path, null, 0);
 //            db_delete();
+            //Database file is Copied here
+            checkandUpdateLoginTimes_UpdateDatabaseCheck();
         } catch (Exception e) {
             this.getReadableDatabase();
             CopyDatabases();
@@ -63,7 +65,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String outFilename = DbPath + DbName;
 
 
-
             OutputStream mOutputstream = new FileOutputStream(outFilename);
             byte[] buffer = new byte[1024];
             int length;
@@ -74,6 +75,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             mOutputstream.close();
             mInputStream.close();
 
+            //Database file is Copied here
+            checkandUpdateLoginTimes_UpdateDatabaseCheck();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,6 +90,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+    private void checkandUpdateLoginTimes_UpdateDatabaseCheck() {
+
+        //       Check for Database Update
+
+        Cursor cursor1 = new DatabaseHelper(context, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "DB_VERSION").readalldata();
+        while (cursor1.moveToNext()) {
+            int DB_VERSION_FROM_DATABASE = cursor1.getInt(1);
+
+            if (DB_VERSION_FROM_DATABASE != SplashScreen.DB_VERSION_INSIDE_TABLE) {
+                DatabaseHelper databaseHelper2 = new DatabaseHelper(context, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "DB_VERSION");
+                databaseHelper2.db_delete();
+            }
+
+        }
+        cursor1.close();
+
+    }
+
 
     public void db_delete() {
         File file = new File(DbPath + DbName);
