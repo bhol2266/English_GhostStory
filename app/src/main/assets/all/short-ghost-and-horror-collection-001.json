@@ -1,0 +1,82 @@
+{
+    "coverImage": "https://www.archive.org/download/LibrivoxCdCovers3/Short_Ghost_and_Horror_1_1008.jpg",
+    "collectionName": "Short Ghost and Horror Collection 001",
+    "description": "A collection of fifteen stories featuring ghoulies, ghosties, long-leggedy beasties and things that go bump in the night.  Expect shivers up your spine, the smell of human flesh, and the occasional touch of wonder.",
+    "audio_story": [
+        {
+            "title": "The Boarded Window",
+            "author": "Ambrose Bierce",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_boardedwindow_bierce_jrl.mp3"
+        },
+        {
+            "title": "The Cask of Amontillado",
+            "author": "Edgar Allan Poe",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_caskofamontillado_poe_je.mp3"
+        },
+        {
+            "title": "Casting the Runes",
+            "author": "M. R. James",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_castingrunes_mrjames_km.mp3"
+        },
+        {
+            "title": "A Cold Greeting",
+            "author": "Ambrose Bierce",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_coldgreeting_ambrosebierce_sjk.mp3"
+        },
+        {
+            "title": "The Dead Mother",
+            "author": "Unknown",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_deadmother_unknown_jcd.mp3"
+        },
+        {
+            "title": "Death and the Woman",
+            "author": "Gertrude Atherton",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_deathandwoman_atherton_jf.mp3"
+        },
+        {
+            "title": "I Have a Rendezvous with Death",
+            "author": "Alan Seeger",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_ihaverendezvous_seeger_lon.mp3"
+        },
+        {
+            "title": "An Inhabitant of Carcosa",
+            "author": "Ambrose Bierce",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_inhabitantofcarcosa_bierce_gcf.mp3"
+        },
+        {
+            "title": "The Masque of the Red Death",
+            "author": "Edgar Allan Poe",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_masque_poe_gmh.mp3"
+        },
+        {
+            "title": "A Strange Goldfield",
+            "author": "Guy Boothby",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_strangegoldfield_guyboothby_nb.mp3"
+        },
+        {
+            "title": "The Strange Orchid",
+            "author": "H. G. Wells",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_strangeorchid_wells_jcm.mp3"
+        },
+        {
+            "title": "Two Military Executuions",
+            "author": "Ambrose Bierce",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_twomilitaryexecutions_bierce_sto.mp3"
+        },
+        {
+            "title": "The Valley of the Beasts",
+            "author": "Algernon Blackwood",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_valleyofthebeasts_blackwood_ma.mp3"
+        },
+        {
+            "title": "What Was It?",
+            "author": "Fitz-James O'Brien",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_whatwasit_obrien_rm.mp3"
+        },
+        {
+            "title": "Yuki-Onna",
+            "author": "Lafcadio Hearn",
+            "href": "https://www.archive.org/download/short_ghohor_001_librivox/ghohor001_yuki-onna_hearn_dlb.mp3"
+        }
+    ]
+}
