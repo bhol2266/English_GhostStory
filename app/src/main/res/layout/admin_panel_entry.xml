@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="#3A3636"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Enter the Password"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/passwordEdittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="#ffffff"
+        android:gravity="left"
+        android:hint="Enter Here"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#ACA1A1"
+        android:textSize="25dp" />
+
+
+    <Button
+        android:id="@+id/passwordLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rating"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/hooverffext"
+        android:text="Login"
+        android:textColor="#FFD60A" />
+
+
+</LinearLayout>

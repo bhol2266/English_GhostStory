@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name="com.bhola.english_ghoststory.OfflineData"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:hardwareAccelerated="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/app_icon_round"
+        android:supportsRtl="true"
+        android:theme="@style/appTheme"
+        tools:targetApi="n">
+        <activity android:name="com.bhola.english_ghoststory.Notification_Story"/>
+        <activity android:name="com.bhola.english_ghoststory.TermsAndConditions"/>
+
+        <activity android:name="com.bhola.english_ghoststory.StoryPage_Downloads" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/app_ID" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name="com.bhola.english_ghoststory.StoryPage" />
+        <activity
+            android:name="com.bhola.english_ghoststory.Collection_detail"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.bhola.english_ghoststory.admin_panel" />
+        <activity android:name="com.bhola.english_ghoststory.Download" />
+        <activity
+            android:name="com.bhola.english_ghoststory.Collection_GridView"
+            android:screenOrientation="portrait"
+            android:theme="@style/appTheme"
+            />
+        <activity android:name="com.bhola.english_ghoststory.SplashScreen"
+            android:theme="@style/AppTheme.Splash"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.bhola.english_ghoststory.MyMessagingNotification"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                
+            </intent-filter>
+        </service>
+
+
+
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+
+
+</application>
+
+</manifest>

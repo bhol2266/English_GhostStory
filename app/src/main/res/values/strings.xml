@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Horror Stories 2021</string>
+    <string name="app_ID">ca-app-pub-8226562131234590~1008046877</string>
+
+    ADMOB REAL ADS:
+        <string name="ad_Unit_ID">ca-app-pub-8226562131234590/9910552297</string>
+        <string name="interstitial">ca-app-pub-8226562131234590/7092817266</string>
+        <string name="NativeAds">ca-app-pub-8226562131234590/8749898968</string>
+        <string name="Rewarded_ADS_Unit_ID">ca-app-pub-8226562131234590/9527408919</string>
+
+
+    ADMOB TEST ADS:
+<!--    <string name="ad_Unit_ID">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="Rewarded_ADS_Unit_ID">.ca-app-pub-3940256099942544/5224354917</string>-->
+
+
+    Fcebook Ads ID:
+    <string name="Facebbok_BannerAdUnit_1">2880015628994725_2880016335661321</string>
+    <string name="Facebbok_InterstitialAdUnit">2880015628994725_2880016778994610</string>
+
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string name="facebook_app_id">[649267199801694]</string>
+    <string name="fb_login_protocol_scheme">fb[649267199801694]</string>
+
+    <array name="horrorPics">
+        <item>@drawable/aa</item>
+        <item>@drawable/aaa</item>
+        <item>@drawable/bb</item>
+        <item>@drawable/bbb</item>
+        <item>@drawable/cc</item>
+        <item>@drawable/ccc</item>
+        <item>@drawable/dd</item>
+        <item>@drawable/ddd</item>
+        <item>@drawable/ee</item>
+        <item>@drawable/eee</item>
+        <item>@drawable/ff</item>
+        <item>@drawable/fff</item>
+        <item>@drawable/gg</item>
+        <item>@drawable/ggg</item>
+        <item>@drawable/hh</item>
+        <item>@drawable/hhh</item>
+        <item>@drawable/ii</item>
+        <item>@drawable/iii</item>
+        <item>@drawable/jj</item>
+        <item>@drawable/kk</item>
+        <item>@drawable/mm</item>
+        <item>@drawable/nn</item>
+        <item>@drawable/oo</item>
+        <item>@drawable/pp</item>
+        <item>@drawable/qq</item>
+        <item>@drawable/rr</item>
+        <item>@drawable/ss</item>
+        <item>@drawable/tt</item>
+        <item>@drawable/uu</item>
+        <item>@drawable/vv</item>d
+        <item>@drawable/ww</item>d
+        <item>@drawable/xx</item>d
+        <item>@drawable/yy</item>d
+        <item>@drawable/zz</item>d
+    </array>
+
+</resources>

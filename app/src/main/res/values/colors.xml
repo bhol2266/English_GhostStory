@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="textcolor">#FFFFFF</color>
+    <color name="DefaultTextColor">#FFFFFF</color>
+    <color name="tint">#FFFF0000</color>
+    <color name="startcolor">#e2ebf0</color>
+</resources>
+
+<!--    "FFD60A"-->

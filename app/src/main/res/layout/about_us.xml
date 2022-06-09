@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="20dp"
+    android:padding="20dp"
+    android:background="#3A3636"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="About Us"
+   style="@style/YellowTheme"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="left"
+        android:padding="5dp"
+        android:text="Hello Guys! Our Company name is UK DEVELOPERS. And I beleive you all are liking this Desi Bhootiya Kahani Story APP. If you have any Advice and Feedback regarding this Application then you can Contact Us through our E-mail: bhola2266@gmail.com"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/macabre"
+
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

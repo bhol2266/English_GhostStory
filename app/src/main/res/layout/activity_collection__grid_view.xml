@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".Collection_GridView">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/YellowTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/YellowTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="Horror Stories 2021"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+        </RelativeLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone"
+                    ads:adSize="BANNER"
+
+                    ads:adUnitId="@string/ad_Unit_ID" />
+
+                <LinearLayout
+                    android:id="@+id/banner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="3">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection1"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ghost1" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Ghost Stories"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection2"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ghost18" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Creepy Stories"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection3"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ghost21" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="True Horror Stories"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection4"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ghost11" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Personal Experience"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection5"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+                                android:scaleType="fitXY"
+
+                                android:src="@drawable/ghost5" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Evil Spirits"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection6"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+                                android:scaleType="fitXY"
+
+                                android:src="@drawable/ghost7" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Paranormal Activity"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection7"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+                                android:scaleType="fitXY"
+
+                                android:src="@drawable/ghost19" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Mics"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection8"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+                                android:scaleType="fitXY"
+
+                                android:src="@drawable/ghost15" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Scary as Hell"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection9"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+                                android:scaleType="fitXY"
+
+                                android:src="@drawable/ghost16" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Strange Misteries"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="12dp"
+                        android:onClick="collection10"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/hooverffext"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="200dp"
+                                android:padding="1dp"
+                                android:scaleType="fitXY"
+
+                                android:src="@drawable/ghost17" />
+
+                            <TextView
+                                style="@style/YellowTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+
+                                android:text="Super Natural"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </GridLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navmenu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/background"
+        android:theme="@style/NavigationViewStyle"
+        app:headerLayout="@layout/navheader"
+        app:itemIconTint="#FF0000"
+        app:menu="@menu/iconmenu" />
+</androidx.drawerlayout.widget.DrawerLayout>

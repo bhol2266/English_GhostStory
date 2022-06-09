@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background">
+
+
+    <TextView
+        android:id="@+id/your_dialog_seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="ARE YOU SURE WANT TO DELETE?"
+        style="@style/YellowTheme"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/CANCEL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/your_dialog_seekbar"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/hooverffext"
+        android:text="CANCEL"
+        style="@style/YellowTheme"
+        />
+
+    <Button
+        android:id="@+id/DELETE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/your_dialog_seekbar"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/hooverffext"
+        android:text="DELETE"
+        style="@style/YellowTheme"
+        />
+
+
+</RelativeLayout>

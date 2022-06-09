@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="appTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:fontFamily">@font/horror</item>
+
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:fitsSystemWindows">false</item>
+
+    </style>
+
+
+    <style name="YellowTheme" parent="TextAppearance.AppCompat">
+            <item name="android:textColor">@color/DefaultTextColor</item>
+        <item name="android:fontFamily">@font/horror</item>
+            <item name="tint">@color/tint</item>
+    </style>
+
+
+
+    <style name="AppTheme.Splash" parent="@style/appTheme">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <style name="NavigationViewStyle">
+        <item name="android:textSize">20sp</item>
+
+
+        <item name="android:fontFamily">@font/horror</item>
+
+
+    </style>
+
+
+</resources>
