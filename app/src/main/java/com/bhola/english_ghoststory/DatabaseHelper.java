@@ -149,11 +149,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (Database_tableNo.equals("collection9")) {
             qry = "select * from collection9";
         }
+
         if (Database_tableNo.equals("collection10")) {
             qry = "select * from collection10";
+        }  if (Database_tableNo.equals("Audio_story_Category")) {
+            qry = "select * from Audio_story_Category";
+
+        }  if (Database_tableNo.equals("Audio_Story_1")) {
+            qry = "select * from Audio_Story_1";
         }
-
-
+        if (Database_tableNo.equals("Audio_Story_2")) {
+            qry = "select * from Audio_Story_2";
+        }
+        if (Database_tableNo.equals("Audio_Story_3")) {
+            qry = "select * from Audio_Story_3";
+        }
         if (Database_tableNo.equals("UserInformation")) {
             qry = "select * from UserInformation";
         }

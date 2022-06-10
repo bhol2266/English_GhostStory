@@ -37,7 +37,7 @@ import java.util.List;
 
 public class Collection_detail_Audio extends AppCompatActivity {
     String TAG = "taga";
-    List<RowData> COllectionData;
+    List<AudioCategoryModel> collectionData;
 
     int counter = admin_panel.counter;
     String ActionBar_titleView, Database_tableNo, Collection_number;
@@ -66,12 +66,10 @@ public class Collection_detail_Audio extends AppCompatActivity {
             showAds();
         }
 
-        category = getIntent().getStringExtra("category");
-
         actionBar();
 
 
-        COllectionData = new ArrayList<RowData>();
+        collectionData = new ArrayList<AudioCategoryModel>();
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -103,20 +101,21 @@ public class Collection_detail_Audio extends AppCompatActivity {
 
     private void loadAudioDatabase() {
         List<String> name_array = new ArrayList<String>();
-        List<String> duration_array = new ArrayList<String>();
         List<String> date_array = new ArrayList<String>();
         List<String> link_array = new ArrayList<String>();
 
-        Cursor cursor2 = new DatabaseHelper(this, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "Audio_Story_" + category).readalldata();
+
+        Cursor cursor2 = new DatabaseHelper(this, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, getIntent().getStringExtra("ref")).readalldata();
         while (cursor2.moveToNext()) {
+            if(cursor2.getString(2).equals(getIntent().getStringExtra("season"))){
             name_array.add(cursor2.getString(1));
-            duration_array.add(cursor2.getString(2));
             date_array.add(cursor2.getString(3));
             link_array.add(cursor2.getString(4));
+            }
         }
         ArrayList<Object> collectionData = new ArrayList<Object>();
         for (int i = 0; i < name_array.size(); i++) {
-            AudioModel model = new AudioModel(name_array.get(i), duration_array.get(i), date_array.get(i), link_array.get(i));
+            AudioModel model = new AudioModel(name_array.get(i), "13:45", date_array.get(i), link_array.get(i));
             collectionData.add(model);
         }
         adapter2 = new AudioStory_Details_Adapter(collectionData, this);
@@ -126,7 +125,8 @@ public class Collection_detail_Audio extends AppCompatActivity {
 
     private void actionBar() {
         TextView title = findViewById(R.id.title_collection);
-        title.setText(getIntent().getStringExtra("actionBar"));
+        title.setText(getIntent().getStringExtra("Title"));
+        title.setTextSize(24);
         title.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

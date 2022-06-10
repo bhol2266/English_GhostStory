@@ -21,8 +21,10 @@
         tools:targetApi="n">
         <activity android:name="com.bhola.english_ghoststory.Notification_Story"/>
         <activity android:name="com.bhola.english_ghoststory.TermsAndConditions"/>
-
         <activity android:name="com.bhola.english_ghoststory.StoryPage_Downloads" />
+        <activity android:name="com.bhola.english_ghoststory.Collection_detail_Audio" />
+        <activity android:name="com.bhola.english_ghoststory.AudioPlayer" />
+
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

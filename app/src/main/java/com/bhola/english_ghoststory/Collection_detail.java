@@ -50,7 +50,7 @@ public class Collection_detail extends AppCompatActivity {
 
     com.facebook.ads.InterstitialAd facebook_IntertitialAds;
     com.facebook.ads.AdView facebook_adView;
-    int counterr=0;
+    int counterr = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,14 +74,7 @@ public class Collection_detail extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
-
-
-            getDataFromDatabase();
-
-
-
+        getDataFromDatabase();
     }
 
     private void showAds(String Ad_Network_Name, Context mContext) {
@@ -105,10 +98,6 @@ public class Collection_detail extends AppCompatActivity {
 
 
     private void getDataFromDatabase() {
-
-        mref = FirebaseDatabase.getInstance().getReference();
-        mref.keepSynced(true);
-        Log.d("AAAA", "getDataFromDatabase: " + Database_tableNo);
 
         Cursor cursor = new DatabaseHelper(this, SplashScreen.DB_NAME, SplashScreen.DB_VERSION, Database_tableNo).readalldata();
 
