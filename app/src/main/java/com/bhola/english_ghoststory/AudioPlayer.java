@@ -1,5 +1,6 @@
 package com.bhola.english_ghoststory;
 
+import android.app.DownloadManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -22,7 +24,8 @@ import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
 
 public class AudioPlayer extends AppCompatActivity {
     ImageView playBtn;
-    ProgressBar progressbar;
+    LinearLayout progressbar;
+    TextView loadingMessage;
     MediaPlayer mediaPlayer;
     int pausePosition = -1;
     String storyURL, storyName;
@@ -38,6 +41,7 @@ public class AudioPlayer extends AppCompatActivity {
     com.facebook.ads.InterstitialAd facebook_IntertitialAds;
     com.facebook.ads.AdView facebook_adView;
     final boolean[] isPlayingBoolean = {false};
+    DownloadManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +49,10 @@ public class AudioPlayer extends AppCompatActivity {
         setContentView(R.layout.activity_audio_player);
 
         loadAds();
-
+        downloadAudio();
 
         progressbar = findViewById(R.id.progressbar);
+       loadingMessage = findViewById(R.id.message);
         storyTitle = findViewById(R.id.storyTitle);
         currentTime = findViewById(R.id.currentTime);
         seekbar = findViewById(R.id.seekbar);
@@ -61,26 +66,29 @@ public class AudioPlayer extends AppCompatActivity {
 
         startPlayingAudio(); // This is the service class that will run in the background
 
-        playBtn.setOnClickListener(v -> {
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!mediaPlayer.isPlaying()) {  //  PLAY
+                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                    mediaPlayer.seekTo(pausePosition - 500);
+                    mediaPlayer.start();
+                    playBtn.setBackgroundResource(R.drawable.pause);
+                    Toast.makeText(AudioPlayer.this, "Resumed", Toast.LENGTH_SHORT).show();
+                    isPlayingBoolean[0] = true;
 
-            if (!mediaPlayer.isPlaying()) {  //  PLAY
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                mediaPlayer.seekTo(pausePosition - 500);
-                mediaPlayer.start();
-                playBtn.setBackgroundResource(R.drawable.pause);
-                Toast.makeText(AudioPlayer.this, "Resumed", Toast.LENGTH_SHORT).show();
-                isPlayingBoolean[0] = true;
+                } else if (mediaPlayer.isPlaying()) { //   PAUSE
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                    loadAds();
+                    mediaPlayer.pause();
+                    playBtn.setBackgroundResource(R.drawable.play);
+                    pausePosition = mediaPlayer.getCurrentPosition();
+                    playBtn.setBackgroundResource(R.drawable.play);
+                    Toast.makeText(AudioPlayer.this, "Paused", Toast.LENGTH_SHORT).show();
+                    isPlayingBoolean[0] = false;
+                    lottie.setVisibility(View.INVISIBLE);
 
-            } else if (mediaPlayer.isPlaying()) { //   PAUSE
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                loadAds();
-                mediaPlayer.pause();
-                playBtn.setBackgroundResource(R.drawable.play);
-                pausePosition = mediaPlayer.getCurrentPosition();
-                playBtn.setBackgroundResource(R.drawable.play);
-                Toast.makeText(AudioPlayer.this, "Paused", Toast.LENGTH_SHORT).show();
-                isPlayingBoolean[0] = false;
-                lottie.setVisibility(View.INVISIBLE);
+                }
 
             }
         });
@@ -109,23 +117,39 @@ public class AudioPlayer extends AppCompatActivity {
             }
         });
 
-        mediaPlayer.setOnCompletionListener(mp -> {
-            playBtn.setBackgroundResource(R.drawable.play);
-            Toast.makeText(AudioPlayer.this, "Finished", Toast.LENGTH_SHORT).show();
-            try {
-                onBackPressed();
-            } catch (Exception e) {
-                e.printStackTrace();
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                playBtn.setBackgroundResource(R.drawable.play);
+                Toast.makeText(AudioPlayer.this, "Finished", Toast.LENGTH_SHORT).show();
+                try {
+                    onBackPressed();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
             @Override
             public void onBufferingUpdate(MediaPlayer mp, int percent) {
+                loadingMessage.setText(percent);
                 if (isPlayingBoolean[0]) {
-                    progressbar.setVisibility(View.INVISIBLE);
+//                    progressbar.setVisibility(View.INVISIBLE);
                     lottie.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+    }
+
+    private void downloadAudio() {
+        ImageView downloadBtn;
+        downloadBtn = findViewById(R.id.downloadBtn);
+        downloadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
@@ -141,20 +165,21 @@ public class AudioPlayer extends AppCompatActivity {
                 mediaPlayer.reset();
                 mediaPlayer.setDataSource(storyURL);
                 mediaPlayer.prepareAsync();
-                mediaPlayer.setOnPreparedListener(mp -> {
-                    try {
-                        seekbar.setMax(mediaPlayer.getDuration());
-                        updateSeekbar();
-                        mediaPlayer.start();
-                        seekbar.setVisibility(View.VISIBLE);
+                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        try {
+                            seekbar.setMax(mediaPlayer.getDuration());
+                            updateSeekbar();
+                            mediaPlayer.start();
+                            seekbar.setVisibility(View.VISIBLE);
 
-                        setCurrentTime();
-                        isPlayingBoolean[0] = true;
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                            setCurrentTime();
+                            isPlayingBoolean[0] = true;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-
-
                 });
 
 
@@ -262,11 +287,10 @@ public class AudioPlayer extends AppCompatActivity {
                 mediaPlayer = null;
             }
         } catch (Exception e) {
-            Log.d("TAGA", "onBackPressed: "+e.getMessage());
+            Log.d("TAGA", "onBackPressed: " + e.getMessage());
         }
 
     }
-
 
 
     @Override

@@ -125,7 +125,7 @@ public class SplashScreen extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 LinearLayout progressbar = findViewById(R.id.progressbar);
                 progressbar.setVisibility(View.VISIBLE);
-//                handler_forIntent();
+                handler_forIntent();
             }
 
             @Override
@@ -174,7 +174,8 @@ public class SplashScreen extends AppCompatActivity {
     private void allUrl() {
 
 
-        url_mref = FirebaseDatabase.getInstance().getReference().child("shareapp_url");
+        url_mref = FirebaseDatabase.getInstance().getReference().child("\n" +
+                "English_GhostStory");
         url_mref.keepSynced(true);
         url_mref.addValueEventListener(new ValueEventListener() {
             @Override

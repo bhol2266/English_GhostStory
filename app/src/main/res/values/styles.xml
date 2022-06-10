@@ -31,7 +31,7 @@
 
     <style name="NavigationViewStyle">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#B39C58</item>
+        <item name="android:textColor">#FFD60A</item>
         <item name="android:fontFamily">@font/lora</item>
         <item name="android:background">@drawable/background2</item>
     </style>
