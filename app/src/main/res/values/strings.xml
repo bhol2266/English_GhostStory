@@ -3,15 +3,15 @@
     <string name="app_ID">ca-app-pub-8226562131234590~1008046877</string>
 
     ADMOB REAL ADS:
-        <string name="ad_Unit_ID">ca-app-pub-8226562131234590/9910552297</string>
-        <string name="interstitial">ca-app-pub-8226562131234590/7092817266</string>
-        <string name="NativeAds">ca-app-pub-8226562131234590/8749898968</string>
-        <string name="Rewarded_ADS_Unit_ID">ca-app-pub-8226562131234590/9527408919</string>
+    <string name="ad_Unit_ID">ca-app-pub-8226562131234590/9910552297</string>
+    <string name="interstitial">ca-app-pub-8226562131234590/7092817266</string>
+    <string name="NativeAds">ca-app-pub-8226562131234590/8749898968</string>
+    <string name="Rewarded_ADS_Unit_ID">ca-app-pub-8226562131234590/9527408919</string>
 
 
     ADMOB TEST ADS:
-<!--    <string name="ad_Unit_ID">ca-app-pub-3940256099942544/6300978111</string>-->
-<!--    <string name="Rewarded_ADS_Unit_ID">.ca-app-pub-3940256099942544/5224354917</string>-->
+    <!--    <string name="ad_Unit_ID">ca-app-pub-3940256099942544/6300978111</string>-->
+    <!--    <string name="Rewarded_ADS_Unit_ID">.ca-app-pub-3940256099942544/5224354917</string>-->
 
 
     Fcebook Ads ID:

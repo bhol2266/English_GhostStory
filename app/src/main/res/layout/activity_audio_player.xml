@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintBottom_toTopOf="@+id/playBtn_and_SeekbarLayout"
         app:layout_constraintTop_toBottomOf="@id/relativeLayout">
 
 
@@ -135,86 +135,95 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:indeterminateTint="@color/textcolor"
-                android:visibility="visible"
-               />
+                android:indeterminateTint="@color/yellow"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/lora"
                 android:gravity="center"
                 android:text="Loading from internet...."
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="20dp"
                 android:textAlignment="center"
                 android:textColor="@color/textcolor2"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
+
         <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lottie"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:elevation="5dp"
-                android:visibility="invisible"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/audioplay_anim"
-                app:lottie_speed="1" />
+            android:id="@+id/lottie"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:elevation="5dp"
+            android:visibility="invisible"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/audioplay_anim"
+            app:lottie_speed="1" />
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/playBtn_and_SeekbarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/playBtn"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <SeekBar
-            android:id="@+id/seekbar"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="3"
-            android:progress="0"
-            android:progressBackgroundTint="@color/textcolor2"
-            android:progressTint="@color/textcolor"
-            android:thumbTint="@color/textcolor" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/currentTime"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/lora"
-            android:gravity="center"
-            android:text="00:00"
-            android:textColor="@color/textcolor"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="3"
+                android:progress="0"
+                android:progressBackgroundTint="@color/textcolor2"
+                android:progressTint="@color/textcolor"
+                android:thumbTint="@color/textcolor" />
+
+            <TextView
+                android:id="@+id/currentTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/lora"
+                android:gravity="center"
+                android:text="00:00"
+                android:textColor="@color/textcolor"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/playBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:orientation="horizontal"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/playBtn"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:orientation="horizontal"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

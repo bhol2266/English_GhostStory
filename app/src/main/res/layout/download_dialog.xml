@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#3A3636">
+
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/macabre"
+        android:gravity="start"
+        android:text="Downloading  asdfdsfa.mp3"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <!--    <SeekBar-->
+    <!--        android:id="@+id/seekbar"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/description"-->
+    <!--        android:layout_marginStart="5dp"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:layout_marginEnd="5dp"-->
+    <!--        android:layout_marginBottom="10dp"-->
+    <!--        android:max="100"-->
+    <!--        android:min="1"-->
+    <!--        android:enabled="false"-->
+    <!--        android:progress="0"-->
+    <!--        android:progressBackgroundTint="@color/textcolor2"-->
+    <!--        android:progressTint="@color/yellow"-->
+    <!--        android:thumbTint="@color/yellow" />-->
+
+    <ProgressBar
+        android:id="@+id/seekbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_margin="10dp"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="@color/textcolor2"
+        android:progressTint="@color/yellow" />
+
+    <TextView
+        android:id="@+id/progress_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/macabre"
+        android:text="connecting..."
+        android:textColor="@color/yellow"
+        android:textSize="22dp" />
+
+    <Button
+        android:id="@+id/cancelbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekbar"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/hooverffext"
+        android:fontFamily="@font/macabre"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="Cancel"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+</RelativeLayout>

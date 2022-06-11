@@ -6,25 +6,32 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.bhola.english_ghoststory.OfflineData"
+        android:name=".OfflineData"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:hardwareAccelerated="true"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/appTheme"
         tools:targetApi="n">
-        <activity android:name="com.bhola.english_ghoststory.Notification_Story"/>
-        <activity android:name="com.bhola.english_ghoststory.TermsAndConditions"/>
-        <activity android:name="com.bhola.english_ghoststory.StoryPage_Downloads" />
-        <activity android:name="com.bhola.english_ghoststory.Collection_detail_Audio" />
-        <activity android:name="com.bhola.english_ghoststory.AudioPlayer" />
-
+        <activity
+            android:name=".OfflineAudioStory"
+            android:exported="false" />
+        <activity android:name=".Notification_Story" />
+        <activity android:name=".TermsAndConditions" />
+        <activity android:name=".StoryPage_Downloads" />
+        <activity android:name=".Collection_detail_Audio" />
+        <activity android:name=".AudioPlayer" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -33,20 +40,20 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name="com.bhola.english_ghoststory.StoryPage" />
+        <activity android:name=".StoryPage" />
         <activity
-            android:name="com.bhola.english_ghoststory.Collection_detail"
+            android:name=".Collection_detail"
             android:screenOrientation="portrait" />
-        <activity android:name="com.bhola.english_ghoststory.admin_panel" />
-        <activity android:name="com.bhola.english_ghoststory.Download" />
+        <activity android:name=".admin_panel" />
+        <activity android:name=".Download" />
         <activity
-            android:name="com.bhola.english_ghoststory.Collection_GridView"
+            android:name=".Collection_GridView"
             android:screenOrientation="portrait"
-            android:theme="@style/appTheme"
-            />
-        <activity android:name="com.bhola.english_ghoststory.SplashScreen"
-            android:theme="@style/AppTheme.Splash"
-            android:exported="true">
+            android:theme="@style/appTheme" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,21 +62,16 @@
         </activity>
 
         <service
-            android:name="com.bhola.english_ghoststory.MyMessagingNotification"
+            android:name=".MyMessagingNotification"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-                
             </intent-filter>
         </service>
 
-
-
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-
-
-
-</application>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+    </application>
 
 </manifest>
