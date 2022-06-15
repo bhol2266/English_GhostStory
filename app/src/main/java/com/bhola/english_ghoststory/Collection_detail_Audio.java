@@ -39,11 +39,7 @@ public class Collection_detail_Audio extends AppCompatActivity {
     String TAG = "taga";
     List<AudioCategoryModel> collectionData;
 
-    int counter = admin_panel.counter;
-    String ActionBar_titleView, Database_tableNo, Collection_number;
 
-    ProgrammingAdapter adapter;
-    Context context;
     ImageView back, share_ap;
     private AdView mAdView;
 
@@ -51,7 +47,6 @@ public class Collection_detail_Audio extends AppCompatActivity {
     com.facebook.ads.InterstitialAd facebook_IntertitialAds;
     com.facebook.ads.AdView facebook_adView;
 
-    String category;
     AudioStory_Details_Adapter adapter2;
     RecyclerView recyclerView;
 
@@ -251,8 +246,7 @@ class AudioStory_Details_Adapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
                 } else {
-                    Toast.makeText(context, "Check Internet Connection!" + System.lineSeparator() +
-                            "इंटरनेट कनेक्शन चेक करे", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Check Internet Connection!" , Toast.LENGTH_SHORT).show();
                 }
 
             }

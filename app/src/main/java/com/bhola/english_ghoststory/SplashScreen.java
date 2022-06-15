@@ -174,16 +174,12 @@ public class SplashScreen extends AppCompatActivity {
     private void allUrl() {
 
 
-        url_mref = FirebaseDatabase.getInstance().getReference().child("\n" +
-                "English_GhostStory");
-        url_mref.keepSynced(true);
+        url_mref = FirebaseDatabase.getInstance().getReference().child("English_GhostStory");
         url_mref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String match = (String) snapshot.child("switch_Exit_Nav").getValue().toString().trim();
                 exit_Refer_appNavigation = (String) snapshot.child("switch_Exit_Nav").getValue().toString().trim();
-
 
                 Ads_State = snapshot.child("Ads").getValue().toString().trim();
                 Refer_App_url2 = snapshot.child("Refer_App_url2").getValue().toString().trim();

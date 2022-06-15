@@ -17,9 +17,9 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/macabre"
         android:gravity="start"
-        android:text="Downloading  asdfdsfa.mp3"
+        android:text="asdfdsfa.mp3 downloading..."
         android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <!--    <SeekBar-->
     <!--        android:id="@+id/seekbar"-->
@@ -64,7 +64,23 @@
         android:fontFamily="@font/macabre"
         android:text="connecting..."
         android:textColor="@color/yellow"
-        android:textSize="22dp" />
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/downloadSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:layout_toRightOf="@+id/progress_indicator"
+        android:layout_below="@id/seekbar"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/macabre"
+        android:text="(2MB/50MB)"
+        android:textColor="#ffffff"
+        android:visibility="gone"
+        android:textSize="14dp" />
+
 
     <Button
         android:id="@+id/cancelbtn"

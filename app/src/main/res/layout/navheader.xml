@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#B39C58"
+        android:textColor="@color/yellow"
         android:textSize="32dp"
         android:textAlignment="center"
         android:paddingTop="10dp"

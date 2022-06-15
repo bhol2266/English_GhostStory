@@ -1,58 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <item-->
-<!--        android:id="@+id/menu_notificaton"-->
-<!--        android:icon="@drawable/menu_notification"-->
-<!--        android:title="NOTIFICATIONS" />-->
+    <!--    <item-->
+    <!--        android:id="@+id/menu_notificaton"-->
+    <!--        android:icon="@drawable/menu_notification"-->
+    <!--        android:title="NOTIFICATIONS" />-->
 
     <item
         android:id="@+id/menu_downloads"
         android:icon="@drawable/menu_favourite"
-        android:title="FAVOURITES"
+        android:title="Favourites" />
 
-
-        />
+    <item
+        android:id="@+id/menu_audio"
+        android:icon="@drawable/download"
+        android:title="Offline Audio stories" />
 
     <item
         android:id="@+id/menu_share_app"
         android:icon="@drawable/sharee"
-        android:title="SHARE APP"
-        android:iconTint="#03A9F4"/>
+        android:iconTint="#03A9F4"
+        android:title="Share App" />
 
     <item
         android:id="@+id/menu_shayari_app"
         android:icon="@drawable/playstore"
-        android:title="FREE APPS" />
+        android:title="Free Apps" />
 
     <item
         android:id="@+id/menu_rating"
         android:icon="@drawable/menu_rating"
-        android:title="GIVE RATING" />
-
+        android:title="Give Rating" />
 
 
     <item
         android:id="@+id/menu_contacts"
         android:icon="@drawable/phone"
-        android:title="CONTACTS" />
+        android:title="Contacts" />
 
     <group android:id="@+id/group_feature">
 
-    <item
-        android:id="@+id/Terms_and_Condition"
-        android:icon="@drawable/terms_and_conditions"
-        android:title="Terms and Condition" />
+        <item
+            android:id="@+id/Terms_and_Condition"
+            android:icon="@drawable/terms_and_conditions"
+            android:title="Terms and Condition" />
 
-    <item
-        android:id="@+id/Privacy_Policy"
-        android:icon="@drawable/privacy_policy"
-        android:title="Privacy Policy" />
+        <item
+            android:id="@+id/Privacy_Policy"
+            android:icon="@drawable/privacy_policy"
+            android:title="Privacy Policy" />
 
-    <item
-        android:id="@+id/About_Us"
-        android:icon="@drawable/aboutus"
-        android:title="About Us" />
+        <item
+            android:id="@+id/About_Us"
+            android:icon="@drawable/aboutus"
+            android:title="About Us" />
     </group>
 
 

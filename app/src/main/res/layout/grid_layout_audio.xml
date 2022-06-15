@@ -32,9 +32,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
+            android:fontFamily="@font/macabre"
             android:text="Ghost Stories"
             android:gravity="center"
-            android:textSize="18dp" />
+            android:textSize="14dp" />
 
     </LinearLayout>
 

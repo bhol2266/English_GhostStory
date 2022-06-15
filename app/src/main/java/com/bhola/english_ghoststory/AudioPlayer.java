@@ -5,7 +5,9 @@ import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -26,12 +28,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -55,6 +59,8 @@ public class AudioPlayer extends AppCompatActivity {
     Handler handler;
     TextView currentTime, storyTitle;
     LottieAnimationView lottie;
+    ProgressBar progressbarUnit;
+
     // Ads Stuff
     AdView mAdView;
     RewardedInterstitialAd mRewardedVideoAd;
@@ -71,6 +77,8 @@ public class AudioPlayer extends AppCompatActivity {
     Button cancelbtn;
     ProgressBar progressbarDownload;
     DownloadFileFromURL downloadTask;
+    TextView downloadSize;
+    CoordinatorLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +96,7 @@ public class AudioPlayer extends AppCompatActivity {
         seekbar = findViewById(R.id.seekbar);
         playBtn = findViewById(R.id.playBtn);
         playBtn.setBackgroundResource(R.drawable.play);
+        progressbarUnit = findViewById(R.id.progressbarUnit);
         lottie = findViewById(R.id.lottie);
 
         storyURL = decryption(getIntent().getStringExtra("storyURL"));
@@ -129,6 +138,7 @@ public class AudioPlayer extends AppCompatActivity {
 
                 if (fromUser) {
                     progressbar.setVisibility(View.VISIBLE);
+                    progressbarUnit.setVisibility(View.VISIBLE);
                     lottie.setVisibility(View.INVISIBLE);
                     seekBar.setProgress(progress);
                     mediaPlayer.seekTo(progress);
@@ -168,11 +178,12 @@ public class AudioPlayer extends AppCompatActivity {
                     if (isPlayingBoolean[0]) {
                         mp.start();
                         lottie.setVisibility(View.VISIBLE);
+                        progressbarUnit.setVisibility(View.GONE);
                     }
                     playBtn_and_SeekbarLayout.setVisibility(View.VISIBLE);
                 }
 
-                loadingMessage.setText(Integer.toString(percent) + "% loaded");
+                loadingMessage.setText(Integer.toString(percent) + "% buffered");
 
                 if (percent == 100) {
                     progressbar.setVisibility(View.INVISIBLE);
@@ -318,7 +329,22 @@ public class AudioPlayer extends AppCompatActivity {
                         downloadTask = new DownloadFileFromURL();
                         downloadTask.execute(storyURL);
                     } else {
-                        Toast.makeText(getApplicationContext(), storyName + " is Already Downloaded", Toast.LENGTH_SHORT).show();
+                        final Snackbar snackbar = Snackbar.make(v, "", Snackbar.LENGTH_LONG);
+                        View customSnackView = getLayoutInflater().inflate(R.layout.custom_snackbar_view, null);
+                        // now change the layout of the snackbar
+                        Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+
+                        TextView gotoDownloads = customSnackView.findViewById(R.id.gotoDownloads);
+                        gotoDownloads.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(AudioPlayer.this, OfflineAudioStory.class));
+                            }
+                        });
+
+                        // add the custom snack bar layout to snackbar layout
+                        snackbarLayout.addView(customSnackView, 0);
+                        snackbar.show();
                     }
 
                 } else {
@@ -416,12 +442,15 @@ public class AudioPlayer extends AppCompatActivity {
         builder.setCancelable(false);
 
         description = promptView.findViewById(R.id.description);
-        description.setText("Downloading " + storyName + ".mp3");
+        description.setText(storyName+".mp3 downloading...");
         progress_indicator = promptView.findViewById(R.id.progress_indicator);
+        downloadSize = promptView.findViewById(R.id.downloadSize);
         cancelbtn = promptView.findViewById(R.id.cancelbtn);
         cancelbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(AudioPlayer.this, "Download Cancelled", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
                 downloadTask.cancel(true);
                 ContextWrapper cw = new ContextWrapper(getApplicationContext());
                 File directory = cw.getDir("Download", Context.MODE_PRIVATE);
@@ -429,14 +458,11 @@ public class AudioPlayer extends AppCompatActivity {
                 if (file.exists()) {
                     file.delete();
                 }
-                mdialog.cancel();
             }
         });
+
         progressbarDownload = promptView.findViewById(R.id.seekbar);
-
-
         dialog = builder.create();
-//        dialog.show();
     }
 
 
@@ -444,6 +470,7 @@ public class AudioPlayer extends AppCompatActivity {
 
     class DownloadFileFromURL extends AsyncTask<String, String, String> {
 
+        int lenghtOfFile;
 
         @Override
         protected void onPreExecute() {
@@ -464,7 +491,8 @@ public class AudioPlayer extends AppCompatActivity {
 
                 // this will be useful so that you can show a tipical 0-100%
                 // progress bar
-                int lenghtOfFile = connection.getContentLength();
+                lenghtOfFile = connection.getContentLength();
+
 
                 // download the file
                 InputStream input = new BufferedInputStream(url.openStream(),
@@ -509,9 +537,17 @@ public class AudioPlayer extends AppCompatActivity {
          * Updating progress bar
          */
         protected void onProgressUpdate(String... progress) {
+            if (mediaPlayer.isPlaying()) {
+                playBtn.performClick();
+            }
             // setting progress percentage
             progressbarDownload.setProgress(Integer.parseInt(progress[0]));
             progress_indicator.setText(progress[0] + "%");
+            int fileSize_inMB = (lenghtOfFile / 1024) / 1024;
+            int progress_percent = Integer.parseInt(progress[0]);
+            int progress_inMB = progress_percent * fileSize_inMB;
+            downloadSize.setText("(" + progress_inMB / 100 + "MB/" + fileSize_inMB + "MB)");
+            downloadSize.setVisibility(View.VISIBLE);
 
         }
 
@@ -522,7 +558,7 @@ public class AudioPlayer extends AppCompatActivity {
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after the file was downloaded
             dialog.cancel();
-            Toast.makeText(AudioPlayer.this, "Completed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AudioPlayer.this, "Download Completed", Toast.LENGTH_SHORT).show();
 
         }
     }

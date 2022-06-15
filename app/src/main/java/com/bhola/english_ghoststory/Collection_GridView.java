@@ -61,6 +61,7 @@ public class Collection_GridView extends AppCompatActivity {
     TabItem tabItem1, tabItem2;
     PageAdapter pageAdapter;
     private ReviewManager reviewManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,8 +78,6 @@ public class Collection_GridView extends AppCompatActivity {
 
         navigationDrawer();
         tabview();
-
-
 
 
     }
@@ -160,7 +159,7 @@ public class Collection_GridView extends AppCompatActivity {
         builder.setCancelable(true);
 
         TextView exitMSG;
-        exitMSG =promptView.findViewById(R.id.exitMSG);
+        exitMSG = promptView.findViewById(R.id.exitMSG);
         exitMSG.setVisibility(View.VISIBLE);
         init(); // Show PLay store Review option
 
@@ -229,8 +228,6 @@ public class Collection_GridView extends AppCompatActivity {
     }
 
 
-
-
     private void navigationDrawer() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -251,6 +248,10 @@ public class Collection_GridView extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.menu_downloads:
                         startActivity(new Intent(getApplicationContext(), Download.class));
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_audio:
+                        startActivity(new Intent(getApplicationContext(), OfflineAudioStory.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
@@ -455,6 +456,7 @@ public class Collection_GridView extends AppCompatActivity {
         // Referencing the button
         showRateApp();
     }
+
     // Shows the app rate dialog box using In-App review API
     // The app rate dialog box might or might not shown depending
     // on the Quotas and limitations

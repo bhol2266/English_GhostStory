@@ -25,6 +25,9 @@
         android:theme="@style/appTheme"
         tools:targetApi="n">
         <activity
+            android:name=".AudioPlayerOffline"
+            android:exported="false" />
+        <activity
             android:name=".OfflineAudioStory"
             android:exported="false" />
         <activity android:name=".Notification_Story" />

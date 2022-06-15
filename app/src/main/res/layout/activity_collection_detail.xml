@@ -86,5 +86,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/message"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:visibility="gone"
+            android:textSize="30dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No stories to show..."
+            android:textColor="@color/yellow"/>
+
 </LinearLayout>
 </LinearLayout>

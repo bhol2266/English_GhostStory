@@ -151,7 +151,7 @@ public class Collection_detail extends AppCompatActivity {
                 passwordLoginBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (passwordEdittext.getText().toString().equals("Ssss5555")) {
+                        if (passwordEdittext.getText().toString().equals("5555")) {
                             startActivity(new Intent(getApplicationContext(), admin_panel.class));
 
                         } else {
