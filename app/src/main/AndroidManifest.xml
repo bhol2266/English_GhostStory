@@ -34,7 +34,8 @@
         <activity android:name=".TermsAndConditions" />
         <activity android:name=".StoryPage_Downloads" />
         <activity android:name=".Collection_detail_Audio" />
-        <activity android:name=".AudioPlayer" />
+        <activity android:name=".AudioPlayer"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

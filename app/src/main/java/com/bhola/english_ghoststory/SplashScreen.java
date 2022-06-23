@@ -63,7 +63,7 @@ public class SplashScreen extends AppCompatActivity {
 
     public static String Ad_Network_Name = "admob";
     public static String Notification_Intent_Firebase = "inactive";
-    public static String Main_App_url1 = "https://play.google.com/store/apps/details?id=com.bhola.ghoststory";
+    public static String Main_App_url1 = "https://play.google.com/store/apps/details?id=com.bhola.english_ghoststory&hl=en&gl=US";
     public static String Refer_App_url2 = "https://play.google.com/store/apps/developer?id=UK+DEVELOPERS";
     public static String Ads_State = "inactive";
     public static String updatingApp_on_Playstore = "active";  // active because  if there is network interruptions and value will be not updated. we will not show the stories
@@ -175,23 +175,25 @@ public class SplashScreen extends AppCompatActivity {
 
 
         url_mref = FirebaseDatabase.getInstance().getReference().child("English_GhostStory");
-        url_mref.addValueEventListener(new ValueEventListener() {
+        url_mref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 exit_Refer_appNavigation = (String) snapshot.child("switch_Exit_Nav").getValue().toString().trim();
-
                 Ads_State = snapshot.child("Ads").getValue().toString().trim();
                 Refer_App_url2 = snapshot.child("Refer_App_url2").getValue().toString().trim();
                 Ad_Network_Name = snapshot.child("Ad_Network").getValue().toString().trim();
                 updatingApp_on_Playstore = snapshot.child("updatingApp_on_Playstore").getValue().toString().trim();
 
+                if (Login_Times > 10) {
+                    updatingApp_on_Playstore = "inactive";
+                }
                 handler_forIntent();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d(TAG, "onCancelled: " + error.getMessage());
             }
 
 
@@ -289,7 +291,7 @@ public class SplashScreen extends AppCompatActivity {
 
             for (int i = 0; i < coverImage.size(); i++) {
                 DatabaseHelper insertRecord = new DatabaseHelper(getApplicationContext(), SplashScreen.DB_NAME, SplashScreen.DB_VERSION, "UserInformation");
-                String res = insertRecord.addAudioStoriesLinks(coverImage.get(i),collectionName.get(i), season, description.get(i),  "Audio_Story_3",  "Audio_Story_Category");
+                String res = insertRecord.addAudioStoriesLinks(coverImage.get(i), collectionName.get(i), season, description.get(i), "Audio_Story_3", "Audio_Story_Category");
                 Log.d(TAG, "INSERT DATA: " + res);
             }
 

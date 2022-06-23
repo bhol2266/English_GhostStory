@@ -67,7 +67,9 @@ public class ftab2 extends Fragment {
             cursor.close();
 
         }
-
+        if(SplashScreen.updatingApp_on_Playstore.equals("active")){
+            collectionData.subList(0, collectionData.size()).clear();
+        }
 
 //        Collections.shuffle(collectionData);
         adapter = new Adapter(collectionData, getActivity());

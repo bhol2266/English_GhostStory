@@ -1,19 +1,12 @@
 package com.bhola.english_ghoststory;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,19 +19,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class admin_panel extends AppCompatActivity {
-    public static int counter = 0;
 
     DatabaseReference mref;
     Button Refer_App_url_BTN;
     Switch switch_Exit_Nav, switch_Activate_Ads, switch_UpdatingMode;
-    static String text;
     Button Ad_Network;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
-        mref = FirebaseDatabase.getInstance().getReference();
+        mref = FirebaseDatabase.getInstance().getReference().child("English_GhostStory");
         appControl();
         Ad_Network_Selection();
 
@@ -63,7 +54,7 @@ public class admin_panel extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (Refer_App_url2.length() > 2) {
-                    mref.child("English_GhostStory").child("Refer_App_url2").setValue(Refer_App_url2.getText().toString());
+                    mref.child("Refer_App_url2").setValue(Refer_App_url2.getText().toString());
                     Toast.makeText(admin_panel.this, "Refer_App_url2 ADDED", Toast.LENGTH_SHORT).show();
                     Refer_App_url2.setText("");
                 } else
@@ -80,9 +71,9 @@ public class admin_panel extends AppCompatActivity {
 
 
                 if (isChecked) {
-                    mref.child("English_GhostStory").child("switch_Exit_Nav").setValue("active");
+                    mref.child("switch_Exit_Nav").setValue("active");
                 } else {
-                    mref.child("English_GhostStory").child("switch_Exit_Nav").setValue("inactive");
+                    mref.child("switch_Exit_Nav").setValue("inactive");
                 }
 
             }
@@ -93,9 +84,9 @@ public class admin_panel extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if (isChecked) {
-                    mref.child("English_GhostStory").child("Ads").setValue("active");
+                    mref.child("Ads").setValue("active");
                 } else {
-                    mref.child("English_GhostStory").child("Ads").setValue("inactive");
+                    mref.child("Ads").setValue("inactive");
                 }
 
             }
@@ -107,9 +98,9 @@ public class admin_panel extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if (isChecked) {
-                    mref.child("English_GhostStory").child("updatingApp_on_Playstore").setValue("active");
+                    mref.child("updatingApp_on_Playstore").setValue("active");
                 } else {
-                    mref.child("English_GhostStory").child("updatingApp_on_Playstore").setValue("inactive");
+                    mref.child("updatingApp_on_Playstore").setValue("inactive");
                 }
 
             }
@@ -119,7 +110,7 @@ public class admin_panel extends AppCompatActivity {
     }
 
     private void checkButtonState() {
-        mref.child("English_GhostStory").addValueEventListener(new ValueEventListener() {
+        mref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String match = (String) snapshot.child("switch_Exit_Nav").getValue().toString().trim();
@@ -155,7 +146,9 @@ public class admin_panel extends AppCompatActivity {
                     switch_UpdatingMode.setBackgroundColor(Color.parseColor("#FF0000"));
                 }
 
-                Ad_Network.setText(SplashScreen.Ad_Network_Name);
+                String AdNetwork = (String) snapshot.child("Ad_Network").getValue().toString().trim();
+
+                Ad_Network.setText(AdNetwork);
                 if (Ad_Network.getText().toString().equals("admob")) {
                     Ad_Network.setBackgroundColor(Color.parseColor("#D11A1A"));
                     Ad_Network.setTextColor(Color.parseColor("#000000"));
@@ -173,6 +166,8 @@ public class admin_panel extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
+
         });
     }
 
@@ -183,12 +178,12 @@ public class admin_panel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Ad_Network.getText().toString().equals("admob")) {
-                    mref.child("shareapp_url").child("Ad_Network").setValue("facebook");
+                    mref.child("Ad_Network").setValue("facebook");
                     Ad_Network.setBackgroundColor(Color.parseColor("#D11A1A"));
                     Ad_Network.setTextColor(Color.parseColor("#ffffff"));
 
                 } else {
-                    mref.child("shareapp_url").child("Ad_Network").setValue("admob");
+                    mref.child("Ad_Network").setValue("admob");
                     Ad_Network.setBackgroundColor(Color.parseColor("#4267B2"));
                     Ad_Network.setTextColor(Color.parseColor("#000000"));
                 }
@@ -198,6 +193,6 @@ public class admin_panel extends AppCompatActivity {
         });
 
     }
+
+
 }
-
-

@@ -38,7 +38,6 @@ public class Collection_detail extends AppCompatActivity {
     List<FirebaseData> collectonData;
     DatabaseReference mref;
     AlertDialog dialog;
-    int counter = admin_panel.counter;
     String ActionBar_titleView, Database_tableNo, Collection_number;
 
     ProgrammingAdapter adapter;
@@ -105,11 +104,14 @@ public class Collection_detail extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 RowData rowData = new RowData(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
                 COllectionData.add(rowData);
-
             }
         } finally {
             cursor.close();
 
+        }
+
+        if(SplashScreen.updatingApp_on_Playstore.equals("active")){
+            COllectionData.subList(5, COllectionData.size() - 1).clear();
         }
 
 

@@ -8,7 +8,6 @@
     tools:context=".admin_panel">
 
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -19,15 +18,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <EditText
             android:id="@+id/Refer_App_url2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:textColor="#ffffff"
+            android:textColorHint="#8A8A8A"
+            android:fontFamily="@font/macabre"
             android:hint="Refer_App_url2"
-            android:textColorHint="#9F9F9F"
             android:inputType="textPersonName" />
 
         <LinearLayout
@@ -41,13 +40,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:background="@drawable/hooverffext"
+                android:fontFamily="@font/macabre"
                 android:text="ADD ReferApp URL"
+                android:textColor="@color/textcolor"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:textColor="@color/textcolor"
                 app:layout_constraintVertical_bias="0.105" />
 
 
@@ -61,12 +63,13 @@
             android:layout_gravity="left"
             android:layout_margin="10dp"
             android:checked="false"
+            android:fontFamily="@font/macabre"
             android:gravity="center"
             android:text="Exit_Dialog_Nav"
             android:textColor="#ffffff"
             android:textOff="Off"
             android:textOn="On"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
@@ -78,12 +81,13 @@
             android:layout_gravity="left"
             android:layout_margin="10dp"
             android:checked="false"
+            android:fontFamily="@font/macabre"
             android:gravity="center"
             android:text="Ads"
             android:textColor="#ffffff"
             android:textOff="Off"
             android:textOn="On"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
@@ -95,12 +99,13 @@
             android:layout_gravity="left"
             android:layout_margin="10dp"
             android:checked="false"
+            android:fontFamily="@font/macabre"
             android:gravity="center"
             android:text="Playstore Update Mode"
             android:textColor="#ffffff"
             android:textOff="Off"
             android:textOn="On"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
 
@@ -111,12 +116,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="5dp"
+            android:background="@drawable/hooverffext"
+            android:fontFamily="@font/macabre"
             android:gravity="center"
             android:text="Ad_Network"
-            android:textSize="15dp"
-            android:background="@drawable/hooverffext"
-            android:textColor="#FFD60A" />
-
+            android:textColor="#FFD60A"
+            android:textSize="18dp" />
 
 
     </LinearLayout>

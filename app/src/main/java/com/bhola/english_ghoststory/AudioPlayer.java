@@ -1,6 +1,7 @@
 package com.bhola.english_ghoststory;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -53,13 +54,13 @@ public class AudioPlayer extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     int pausePosition = -1;
     String storyURL, storyName;
-    int temp = 0;
     SeekBar seekbar;
     Runnable runnable;
     Handler handler;
     TextView currentTime, storyTitle;
     LottieAnimationView lottie;
     ProgressBar progressbarUnit;
+    boolean URL_notWorking=false;
 
     // Ads Stuff
     AdView mAdView;
@@ -158,18 +159,6 @@ public class AudioPlayer extends AppCompatActivity {
         });
 
 
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                playBtn.setBackgroundResource(R.drawable.play);
-                Toast.makeText(AudioPlayer.this, "Finished", Toast.LENGTH_SHORT).show();
-                try {
-                    onBackPressed();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
         mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
             @Override
@@ -193,6 +182,37 @@ public class AudioPlayer extends AppCompatActivity {
                 }
             }
         });
+
+        mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+                URL_notWorking=true;
+                loadingMessage.setText("Audio link not working, Please try another story");
+                loadingMessage.setTextColor(Color.parseColor("#FF0000"));
+                loadingMessage.setTextSize(20);
+                progressbarUnit.setVisibility(View.GONE);
+                mp.stop();
+                return false;
+            }
+        });
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                playBtn.setBackgroundResource(R.drawable.play);
+                if(!URL_notWorking){
+                    Toast.makeText(AudioPlayer.this, "Finished", Toast.LENGTH_SHORT).show();
+                    try {
+                        onBackPressed();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+
     }
 
 
@@ -213,19 +233,21 @@ public class AudioPlayer extends AppCompatActivity {
                             seekbar.setMax(mediaPlayer.getDuration());
                             updateSeekbar();
                             setCurrentTime();
+                            Toast.makeText(AudioPlayer.this, "Playing", Toast.LENGTH_SHORT).show();
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
+
+
                 });
 
 
-                Toast.makeText(AudioPlayer.this, "Playing", Toast.LENGTH_SHORT).show();
                 playBtn.setBackgroundResource(R.drawable.pause);
             }
-            temp = 1;
         } catch (Exception e) {
-            e.printStackTrace();
+            Toast.makeText(this, "LINK BROKEN", Toast.LENGTH_SHORT).show();
         }
     }
 

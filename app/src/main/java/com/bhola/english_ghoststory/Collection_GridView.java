@@ -291,14 +291,7 @@ public class Collection_GridView extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
 
                         break;
-//                    case R.id.menu_notificaton:
-//                        if (SplashScreen.Refer_App_url2.length() > 10) {
-//                            Intent j = new Intent(Intent.ACTION_VIEW);
-//                            j.setData(Uri.parse(SplashScreen.Refer_App_url2));
-//                            startActivity(j);
-//                            drawerLayout.closeDrawer(GravityCompat.START);
-//                            break;
-//                        }
+
 
 
                     case R.id.menu_share_app:

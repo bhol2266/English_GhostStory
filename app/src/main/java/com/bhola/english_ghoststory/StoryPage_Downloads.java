@@ -53,6 +53,7 @@ public class StoryPage_Downloads extends AppCompatActivity {
 
     com.facebook.ads.InterstitialAd facebook_IntertitialAds;
     com.facebook.ads.AdView facebook_adView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,6 +180,12 @@ public class StoryPage_Downloads extends AppCompatActivity {
     }
 
     private void loadHorrorPic() {
+        if (SplashScreen.updatingApp_on_Playstore.equals("active")) {
+            return;
+        }
+        if (SplashScreen.Login_Times < 4) {
+            return;
+        }
         ImageView horror_pic = findViewById(R.id.horror_pic);
         TypedArray images = getResources().obtainTypedArray(R.array.horrorPics);
         int choice = (int) (Math.random() * images.length());
@@ -186,9 +193,11 @@ public class StoryPage_Downloads extends AppCompatActivity {
             choice = (int) (Math.random() * images.length());
         }
         StoryPage.currentHorrorPicIndex=choice;
+        horror_pic.setVisibility(View.VISIBLE);
         horror_pic.setImageResource(images.getResourceId(choice, R.drawable.aaa));
 
     }
+
 
 
     private void showAds() {

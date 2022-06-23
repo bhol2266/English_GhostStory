@@ -235,6 +235,12 @@ public class StoryPage extends AppCompatActivity {
     }
 
     private void loadHorrorPic() {
+        if (SplashScreen.updatingApp_on_Playstore.equals("active")) {
+            return;
+        }
+        if (SplashScreen.Login_Times < 4) {
+            return;
+        }
         ImageView horror_pic = findViewById(R.id.horror_pic);
         TypedArray images = getResources().obtainTypedArray(R.array.horrorPics);
         int choice = (int) (Math.random() * images.length());
@@ -242,6 +248,7 @@ public class StoryPage extends AppCompatActivity {
             choice = (int) (Math.random() * images.length());
         }
         currentHorrorPicIndex=choice;
+        horror_pic.setVisibility(View.VISIBLE);
         horror_pic.setImageResource(images.getResourceId(choice, R.drawable.aaa));
 
     }
